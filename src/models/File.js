@@ -21,7 +21,9 @@ const File = new mongose.Schema(
 // possam acessa-las
 
 File.virtual("url").get(function() {
-  return `http://localhost:3333/files/${encodeURIComponent(this.path)}`;
+  // usamos variaveis ambiente para configurar a url para heroku
+  const url = process.env.URL || "http://localhost:3333";
+  return `${url}/files/${encodeURIComponent(this.path)}`;
 });
 
 module.exports = mongose.model("File", File);

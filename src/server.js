@@ -35,6 +35,6 @@ app.use("/files", express.static(path.resolve(__dirname, "..", "tmp")));
 
 app.use(require("./routes"));
 
-server.listen(3333, () => console.log("Rodando..."));
+server.listen(process.env.PORT || 3333);
 
 //aula 40m:50s
